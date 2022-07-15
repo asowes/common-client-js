@@ -142,33 +142,21 @@ const baseInputs = entrys.map(({ relative, fileName }) => {
       entryFileNames: `[name].js`,
       dir: dir,
       format: "umd",
-      // format: isUmd ? 'umd' : 'es',
       sourcemap: false,
       name: fileNameWithOutPostfix + "-[name]",
     },
     plugins: [
       cleanup(),
       babel({
-        // 添加babel插件
-        exclude: "node_modules/**", // 排除node_modules下的文件
+        exclude: "**/node_modules/**",
         runtimeHelpers: true,
-        presets: [
-          [
-            "@babel/preset-react",
-            {
-              "preset-env": {},
-              "styled-jsx": {},
-              "class-properties": {},
-            },
-          ],
-        ],
-        plugins: ["@babel/plugin-syntax-dynamic-import"],
+        plugins: ["@babel/plugin-external-helpers"],
       }),
       nodeResolve({
         extensions: [".js", ".jsx", ".json", ".node", ".mjs"],
       }),
       commonjs({
-        include: /node_modules/,
+        include: "**/node_modules/**",
         namedExports: {
           react: Object.keys(React),
           "react-dom": Object.keys(ReactDOM),

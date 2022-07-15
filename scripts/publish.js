@@ -53,7 +53,7 @@ function runCommand(command, cwd) {
     cwd
   );
 
-  await runCommand(`cp -r ${originPath} ${path.resolve(cwd, "src")}`, cwd);
+  // await runCommand(`cp -r ${originPath} ${path.resolve(cwd, "src")}`, cwd);
 
   await runCommand("npm version patch", cwd);
   await runCommand("npm publish", cwd);
