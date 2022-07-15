@@ -1,0 +1,13 @@
+{
+  "presets": [
+    [
+      "@babel/preset-react",{
+      "preset-env":{},
+      "transform-runtime":{
+        "regenerator": true
+      },
+      "styled-jsx":{},
+      "class-properties":{}
+    }]
+  ]
+}
