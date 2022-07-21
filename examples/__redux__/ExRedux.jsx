@@ -3,11 +3,13 @@ import {
   updateAddress,
   changeDeposit,
 } from "/originLib/redux/slices/userSlice";
-import { useAppDispatch, useAppSelector } from "/originLib/redux/hooks";
+import { updateUserId } from "/originLib/redux/slices/localStoreSlice";
+import { useAppSelector, useAppDispatch } from "/originLib/redux";
 
 function ExRedux() {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.user);
+  const store = useAppSelector((state) => state.store);
 
   useEffect(() => {
     console.log(user);
@@ -25,6 +27,10 @@ function ExRedux() {
     }
   };
 
+  const _updateUserId = () => {
+    dispatch(updateUserId(store.userId + 1));
+  };
+
   return (
     <React.Fragment>
       <button onClick={_updateAddress}>修改地址</button>
@@ -36,6 +42,10 @@ function ExRedux() {
       <div>当前地址：{user.address}</div>
       <div style={{ marginBottom: 32 }} />
       <div>当前存款: {user.deposit}</div>
+      <div style={{ marginBottom: 32 }} />
+      <button onClick={_updateUserId}>修改用户id</button>
+      <div style={{ marginBottom: 32 }} />
+      <div>用户id: {store?.userId}</div>
     </React.Fragment>
   );
 }

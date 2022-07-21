@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
-import { Provider } from "react-redux";
-import store from "../redux/store";
+import { Provider as ReduxProvider } from "react-redux";
+import createStore from "../redux/store";
 
-function App({ Component, pageProps = {} }) {
+function App({ Component, extraReducer = {} }) {
+  const store = useMemo(() => {
+    return createStore(undefined, extraReducer);
+  }, [extraReducer]);
+
   return (
     <React.Fragment>
-      <Provider store={store}>
+      <ReduxProvider store={store}>
         <Component />
-      </Provider>
+      </ReduxProvider>
     </React.Fragment>
   );
 }
 
 App.propTypes = {
   Component: PropTypes.node,
+  extraReducer: PropTypes.objectOf(PropTypes.any),
 };
 
 export default App;
