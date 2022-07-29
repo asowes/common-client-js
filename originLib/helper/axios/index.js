@@ -4,7 +4,7 @@ const instance = axios.create({
   timeout: 30000,
 });
 
-function axiosRequest(url, method, data, config) {
+export function axiosRequest(url, method, data, config) {
   return instance
     .request({ method, url, data, ...config })
     .then((res) => {
