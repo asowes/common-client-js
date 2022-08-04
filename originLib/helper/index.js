@@ -5,6 +5,3 @@ export const Method = {
   patch: "patch",
   put: "put",
 };
-
-export * from "./fetch";
-export * from "./axios";

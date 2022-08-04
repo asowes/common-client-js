@@ -15,7 +15,7 @@ const store = createStore();
 
 root.render(
   <React.Fragment>
-    {/*<ExButton />*/}
+    <ExButton />
     {/*<Provider store={store}>*/}
     {/*  <ExRedux />*/}
     {/*</Provider>*/}

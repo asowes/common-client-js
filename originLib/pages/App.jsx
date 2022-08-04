@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import PropTypes from "prop-types";
+import { ChakraProvider } from "@chakra-ui/react";
 import { Provider as ReduxProvider } from "react-redux";
 import createStore from "../redux/store";
 
@@ -10,16 +10,13 @@ function App({ Component, extraReducer = {} }) {
 
   return (
     <React.Fragment>
-      <ReduxProvider store={store}>
-        <Component />
-      </ReduxProvider>
+      <ChakraProvider>
+        <ReduxProvider store={store}>
+          <Component />
+        </ReduxProvider>
+      </ChakraProvider>
     </React.Fragment>
   );
 }
-
-App.propTypes = {
-  Component: PropTypes.node,
-  extraReducer: PropTypes.objectOf(PropTypes.any),
-};
 
 export default App;

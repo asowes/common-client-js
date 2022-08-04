@@ -1,4 +1,4 @@
-export function fetchRequest(url, method, data, headers) {
+export default function fetchRequest(url, method, data, headers) {
   const initOptions = {
     headers: {
       "Content-Type": "application/json",
